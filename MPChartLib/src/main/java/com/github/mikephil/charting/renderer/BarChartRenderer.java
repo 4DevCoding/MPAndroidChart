@@ -68,6 +68,7 @@ public class BarChartRenderer extends BarLineScatterCandleBubbleRenderer {
         }
     }
 
+  
     @Override
     public void drawData(Canvas c) {
 
@@ -129,7 +130,10 @@ public class BarChartRenderer extends BarLineScatterCandleBubbleRenderer {
                 mBarShadowRectBuffer.top = mViewPortHandler.contentTop();
                 mBarShadowRectBuffer.bottom = mViewPortHandler.contentBottom();
 
-                c.drawRect(mBarShadowRectBuffer, mShadowPaint);
+                // if (mRadius > 0)
+                    c.drawRoundRect(mBarShadowRectBuffer, 50, 50, mShadowPaint);
+                // else
+                //     c.drawRect(mBarShadowRectBuffer, mShadowPaint);
             }
         }
 
