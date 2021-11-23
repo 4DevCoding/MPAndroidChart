@@ -127,13 +127,13 @@ public class BarChartRenderer extends BarLineScatterCandleBubbleRenderer {
                 if (!mViewPortHandler.isInBoundsRight(mBarShadowRectBuffer.left))
                     break;
 
-                mBarShadowRectBuffer.top = mViewPortHandler.contentTop();
+                mBarShadowRectBuffer.top = mViewPortHandler.contentTop() - 50;
                 mBarShadowRectBuffer.bottom = mViewPortHandler.contentBottom();
 
                 // if (mRadius > 0)
                 c.drawRoundRect(mBarShadowRectBuffer, 50, 50, mShadowPaint);
                 // else
-                //  c.drawRect(mBarShadowRectBuffer, mShadowPaint);
+                c.drawRect(mBarShadowRectBuffer, mShadowPaint);
             }
         }
 
@@ -181,17 +181,18 @@ public class BarChartRenderer extends BarLineScatterCandleBubbleRenderer {
                                 isInverted ? Fill.Direction.DOWN : Fill.Direction.UP);
             }
             else {
-                // c.drawRect(buffer.buffer[j], buffer.buffer[j + 1], buffer.buffer[j + 2],
-                //         buffer.buffer[j + 3], mRenderPaint);
                 c.drawRoundRect(buffer.buffer[j], buffer.buffer[j + 1], buffer.buffer[j + 2],
                         buffer.buffer[j + 3], 50, 50, mRenderPaint);
+                 c.drawRect(buffer.buffer[j], buffer.buffer[j + 1] - 50, buffer.buffer[j + 2],
+                         buffer.buffer[j + 3], mRenderPaint);
             }
 
             if (drawBorder) {
-                // c.drawRect(buffer.buffer[j], buffer.buffer[j + 1], buffer.buffer[j + 2],
-                //         buffer.buffer[j + 3], mBarBorderPaint);
+                
                 c.drawRoundRect(buffer.buffer[j], buffer.buffer[j + 1], buffer.buffer[j + 2],
                         buffer.buffer[j + 3], 50, 50, mBarBorderPaint);
+                c.drawRect(buffer.buffer[j], buffer.buffer[j + 1] - 50, buffer.buffer[j + 2],
+                         buffer.buffer[j + 3], mBarBorderPaint);
             }
         }
     }
